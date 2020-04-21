@@ -12,7 +12,7 @@ BoxPacker expects to recieve the dimensions and weights of the items you will be
 
 **NOTE:** Some of the units of measure within BoxPacker are odd and conversions will need to be made to translate the units of measure into your prefferred units.
 
-## cartonize.php
+# cartonize.php
 ```php
 
 use DVDoug\BoxPacker\Packer;
