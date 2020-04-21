@@ -8,9 +8,11 @@ php -S http://localhost:9090/index.php
 
 Once on the homepage you can click either `Use my own boxes` (in development) or `Use test boxes`, select the 'use test boxes' option to use an interactive demo of the BoxPacker in action. You can select any combination of items to be packed into any of the preset test boxes and `cartonize.php` will optimally pack the given items and recommend the best fit box to ship the items in.
 
+BoxPacker expects to recieve the dimensions and weights of the items you will be shipping, in additon to the dimnesions of the boxes that you will be shipping in. This gives the algorithm in BoxPacker the data it needs to do a `volumetric pack` of any given items, optimized around the use of volume in the box.
+
 **NOTE:** Some of the units of measure within BoxPacker are odd and conversions will need to be made to translate the units of measure into your prefferred units.
 
-### cartonize.php
+## cartonize.php
 ```php
 
 use DVDoug\BoxPacker\Packer;
