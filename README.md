@@ -8,16 +8,10 @@ php -S http://localhost:9090/index.php
 
 Once on the homepage you can click either `Use my own boxes` (in development) or `Use test boxes`, select the 'use test boxes' option to use an interactive demo of the BoxPacker in action. You can select any combination of items to be packed into any of the preset test boxes and `cartonize.php` will optimally pack the given items and recommend the best fit box to ship the items in.
 
+**NOTE:** Some of the units of measure within BoxPacker are odd and conversions will need to be made to translate the units of measure into your prefferred units.
+
 ### cartonize.php
 ```php
-<?php
-
-/*
- * Intentionally ignoring potential errors in minimum viable product, will implement
- * further after presenting the test case.
- * */
-
-date_default_timezone_set('UTC');
 
 use DVDoug\BoxPacker\Packer;
 use DVDoug\BoxPacker\Test\TestBox;
@@ -38,96 +32,28 @@ $successMessage = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $packer = new Packer();
 
-    $packer->addBox(new TestBox( // adding boxes to be used as boxes Items can be packed into.
-        'X-Small Box',
-        150,
-        150,
-        5,
-        5,
-        146,
-        146,
-        4,
-        500
-    ));
+    $packer->addBox(new TestBox('X-Small Box',150,150,5,5,146,146,4,500));
 
-    $packer->addBox(new TestBox( // adding boxes to be used as boxes Items can be packed into.
-        'Small Box',
-        300,
-        300,
-        10,
-        10,
-        296,
-        296,
-        8,
-        1000
-    ));
+    $packer->addBox(new TestBox('Small Box',300,300,10,10,296,296,8,1000));
 
-    $packer->addBox(new TestBox(
-        'Medium Box',
-        1000,
-        1000,
-        38,
-        50,
-        996,
-        996,
-        35,
-        5000
-    ));
+    $packer->addBox(new TestBox('Medium Box', 1000, 1000, 38, 50, 996, 996, 35, 5000));
 
-    $packer->addBox(new TestBox( // adding boxes to be used as boxes Items can be packed into.
-        'Large Box',
-        3000,
-        3000,
-        100,
-        100,
-        2960,
-        2960,
-        80,
-        10000
-    ));
+    $packer->addBox(new TestBox('Large Box',3000,3000,100,100,2960,2960,80,10000));
 
     if ($item1 != 0) {
-        $packer->addItem(new TestItem(
-            'Item 1',
-            25,
-            25,
-            4,
-            100,
-            true
-        ));
+        $packer->addItem(new TestItem('Item 1', 25, 25, 4, 100, true));
     }
 
     if ($item2 != 0) {
-        $packer->addItem(new TestItem(
-            'Item 2',
-            50,
-            50,
-            5,
-            100,
-            true
-        ));
+        $packer->addItem(new TestItem('Item 2', 50, 50, 5, 100, true));
     }
 
     if ($item3 != 0) {
-        $packer->addItem(new TestItem(
-            'Item 3',
-            550,
-            250,
-            12,
-            200,
-            true
-        ));
+        $packer->addItem(new TestItem('Item 3', 550, 250, 12, 200, true));
     }
 
     if ($item4 != 0) {
-        $packer->addItem(new TestItem(
-            'Item 4',
-            750,
-            750,
-            25,
-            700,
-            true
-        ));
+        $packer->addItem(new TestItem('Item 4', 750, 750, 25, 700, true));
     }
 
     // Execute pack() which will pack the items selected into our set boxes
@@ -152,6 +78,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     echo $successMessage;
 }
 
-```
 
-**NOTE:** Some of the units of measure within BoxPacker are odd and conversions will need to be made to translate the units of measure into your prefferred units.
+```
