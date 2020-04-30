@@ -34,13 +34,13 @@ $successMessage = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $packer = new Packer();
 
-    $packer->addBox(new TestBox('X-Small Box',150,150,5,5,146,146,4,500));
+    $packer->addBox(new TestBox('X-Small Box', 150, 150, 5, 5, 146, 146, 4, 500));
 
-    $packer->addBox(new TestBox('Small Box',300,300,10,10,296,296,8,1000));
+    $packer->addBox(new TestBox('Small Box', 300, 300, 10, 10, 296, 296, 8, 1000));
 
     $packer->addBox(new TestBox('Medium Box', 1000, 1000, 38, 50, 996, 996, 35, 5000));
 
-    $packer->addBox(new TestBox('Large Box',3000,3000,100,100,2960,2960,80,10000));
+    $packer->addBox(new TestBox('Large Box', 3000, 3000, 100, 100, 2960, 2960, 80, 10000));
 
     if ($item1 != 0) {
         $packer->addItem(new TestItem('Item 1', 25, 25, 4, 100, true));
